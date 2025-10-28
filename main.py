@@ -1,17 +1,19 @@
 def main():
-    text_frombook = get_book_text("books/frankenstein.txt")
+    import sys
+    if len(sys.argv)==1:
+        print("Usage: python3 main.py <path_to_book>")
+        return sys.exit(1)
+            
+    text_frombook = get_book_text(sys.argv[1])  
 
     from stats import wordcounter
     num_words= wordcounter(text_frombook)
     print ("Found",num_words,"total words")
 
     from stats import characters
-    karakterszamok=characters("books/frankenstein.txt")
+    karakterszamok=characters(sys.argv[1])
     from stats import Filter
     Filter(karakterszamok)
-    #print(karakterszamok)
-    
-
 
 
 
